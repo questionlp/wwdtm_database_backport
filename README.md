@@ -10,6 +10,8 @@ Prior to version 4.1, the Wait Wait Stats Database used the `utf8` MySQL/MariaDB
 
 This wasn't an initial issue when the Stats Page was written for PHP 5 and 6, due to the middling or complete lack of proper Unicode support. When the application was re-written for Python 3, the database had to be updated to use the `utf8mb4` character set. While this doesn't completely break older versions of the Stats Page, it did lead to issues of accented and compound characters to either cause the PHP-based application to error out or not render out strings containing such characters.
 
+When the application encounters a string or text field, it will run `unicodedata.normalize` against the string and reduce accented characters and compound characters to the base ASCII representation as part of its processing. This prevents issues with PHP incorrectly rendering strings or omitting them completely.
+
 ## Usage
 
 In order to use this application, you will need a copy of the Wait Wait Stats Database based on version 4.2 or later running on MySQL 8 or newer and an instance of MySQL 5.6 or MariaDB 10 or newer as a destination. Older versions of the Wait Wait Stats Page application **do not** support versions of MySQL higher than 5.6 due to multiple breaking changes implemented in newer versions.
