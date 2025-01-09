@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "name": "Python Debugger: Backport Script",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/backport.py",
+            "console": "integratedTerminal"
+        }
+    ]
+}
